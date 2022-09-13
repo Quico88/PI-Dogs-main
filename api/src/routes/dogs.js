@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const { getAllBreeds, getBreedsFromQuery, getBreedbyID } = require('../controllers');
-const {Dogs} = require('../db');
+const { getAllBreeds, getBreedsFromQuery, getBreedbyID, createDog } = require('../controllers');
+const { Breed } = require('../db');
 
 const dogsRoute = Router();
 
@@ -38,4 +38,19 @@ dogsRoute.get('/:id', async (req, res) => {
         catch (e) {
             res.status(404).json({error: e.message })
         }
+})
+
+dogsRoute.post('/', async (req, res) => {
+    const {name, height_min, height_max, weight_min, weight_max, life_span, tempID} = req.body;
+    if (!name || (!height_min && !height_max) || (!weight_min && !weight_max) || !tempID){
+        return res.status(404).send('Not all the mandatory fields were filled');
+    }
+    
+    try {
+        const newDog = await createDog(name, height_min, height_max, weight_min, weight_max, life_span, tempID)
+        return res.status(200).json(newDog);
+    }
+    catch (e) {
+        return res.status(400).send("Error in data provided");
+    }
 })

@@ -13,14 +13,22 @@ const getBreedsFromAPI = async () => {
                     weight: e.weight.metric,
                     life_span: e.life_span,
                     image_url: e.image.url,
-                    temperament: e.temperament
+                    temperament: e.temperament ? e.temperament.split(',').map(temp => ({name: temp})) : ""
             }));
         return breedsFromAPI;
 }
 
 const getBreedsFromDB = async () => {
     try {
-        const dbBreeds = await Breed.findAll();
+        const dbBreeds = await Breed.findAll({
+            include: {
+                model: Temperament,
+                attributes: ['name'],
+                through: {
+                    attributes: []
+                }
+            }
+        });
         // console.log("las razas en la DB son: ",dbBreeds);
         return dbBreeds;
     }
@@ -74,12 +82,37 @@ const getTemperaments = async () => {
     Temperament.bulkCreate(TemperamentList_Object);
     return(TemperamentList_Object);
 }
+
+const createDog = async(name, height_min, height_max, weight_min, weight_max, life_span, tempID) =>{
+    
+    let weight = "";
+    if (weight_min && weight_max) weight+=`${weight_min} - ${weight_max}`;
+    else if (weight_min) weight+=weight_min;
+    else weight+=weight_max;
+
+    let height = "";
+    if (height_min && height_max) height+=`${height_min} - ${height_max}`;
+    else if (height_min) height+=height_min;
+    else height+=height_max;
+
+    const newDog = await Breed.create({
+        name,
+        height,
+        weight,
+        life_span,
+    })
+
+    newDog.setTemperaments(tempID);
+
+    return newDog;
+}
     
 
 module.exports = {
     getAllBreeds,
     getBreedsFromQuery,
     getBreedbyID,
-    getTemperaments
+    getTemperaments,
+    createDog
 }
 
