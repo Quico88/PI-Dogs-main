@@ -1,0 +1,56 @@
+https://api.thedogapi.com/v1/breeds
+
+Arreglo con 172 objetos
+
+cada objeto es una raza
+
+propeidades de cada raza:
+
+"id": 1,
+"name": "Affenpinscher",
+"bred_for": "Small rodent hunting, lapdog",
+"breed_group": "Toy",
+"life_span": "10 - 12 years",
+"temperament": "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
+"origin": "Germany, France",
+"reference_image_id": "BJa4kxc4X",
+
+"image": {
+    "id": "BJa4kxc4X",
+    "width": 1600,
+    "height": 1199,
+    "url": "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg"
+}
+
+"weight": {
+    "imperial": "6 - 13",
+    "metric": "3 - 6"
+},
+"height": {
+    "imperial": "9 - 11.5",
+    "metric": "23 - 29"
+},
+
+
+URL con npmbre de la raza:
+https://api.thedogapi.com/v1/breeds/search?q=french%20bulldog
+
+[
+{
+"weight": {
+    "imperial": "28",
+    "metric": "13"
+},
+"height": {
+    "imperial": "11 - 12",
+    "metric": "28 - 30"
+},
+"id": 113,
+"name": "French Bulldog",
+"bred_for": "Lapdog",
+"breed_group": "Non-Sporting",
+"life_span": "9 - 11 years",
+"temperament": "Playful, Affectionate, Keen, Sociable, Lively, Alert, Easygoing, Patient, Athletic, Bright",
+"reference_image_id": "HyWNfxc47"
+}
+]
