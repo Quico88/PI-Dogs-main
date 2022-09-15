@@ -1,0 +1,17 @@
+.dogImage {
+    height: 150px;
+    width: 180px;
+}
+
+.dogCardContainer {
+    width: 300px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(232, 188, 188);
+    padding: 10px;
+    margin: 25px;
+    opacity: .8;
+}

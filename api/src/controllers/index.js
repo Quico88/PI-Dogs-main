@@ -13,7 +13,8 @@ const getBreedsFromAPI = async () => {
                     weight: e.weight.metric,
                     life_span: e.life_span,
                     image_url: e.image.url,
-                    temperament: e.temperament ? e.temperament.split(',').map(temp => ({name: temp})) : ""
+                    temperaments: e.temperament ? e.temperament.split(',').map(temp => ({name: temp})) : null,
+                    home_grown_data: false
             }));
         return breedsFromAPI;
 }
@@ -29,7 +30,6 @@ const getBreedsFromDB = async () => {
                 }
             }
         });
-        // console.log("las razas en la DB son: ",dbBreeds);
         return dbBreeds;
     }
     catch(e){
@@ -62,7 +62,6 @@ const getBreedbyID = async (id) => {
 const getTemperaments = async () => {
     const temperamentsDB = await Temperament.findAll();
     if(temperamentsDB.length > 0){
-        // console.log("entro al if pq hay algo en temperaments en la DB")    
         return temperamentsDB;
     }
 
