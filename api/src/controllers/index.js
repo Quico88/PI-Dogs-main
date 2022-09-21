@@ -13,7 +13,7 @@ const getBreedsFromAPI = async () => {
                     weight: e.weight.metric,
                     life_span: e.life_span,
                     image_url: e.image.url,
-                    temperaments: e.temperament ? e.temperament.split(',').map(temp => ({name: temp})) : null,
+                    temperaments: e.temperament ? e.temperament.split(', ').map(temp => ({name: temp})) : null,
                     home_grown_data: false
             }));
         return breedsFromAPI;
@@ -72,17 +72,19 @@ const getTemperaments = async () => {
     let TemperamentsAPI = [];
     
     data.forEach(el => {
-        el.temperament ? TemperamentsAPI.push(el.temperament.split(',')) : ""
+        el.temperament ? TemperamentsAPI.push(el.temperament.split(', ')) : ""
     });
     
     const TemperamentList = [...new Set(TemperamentsAPI.flat())];
     const TemperamentList_Object = TemperamentList.map(e => ({name: e}))
     
     Temperament.bulkCreate(TemperamentList_Object);
-    return(TemperamentList_Object);
+    
+    const temperaments = await Temperament.findAll();
+    return temperaments;
 }
 
-const createDog = async(name, height_min, height_max, weight_min, weight_max, life_span, tempID) =>{
+const createDog = async(name, height_min, height_max, weight_min, weight_max, life_span, tempID, image_url) =>{
     
     let weight = "";
     if (weight_min && weight_max) weight+=`${weight_min} - ${weight_max}`;
@@ -99,6 +101,7 @@ const createDog = async(name, height_min, height_max, weight_min, weight_max, li
         height,
         weight,
         life_span,
+        image_url
     })
 
     newDog.setTemperaments(tempID);

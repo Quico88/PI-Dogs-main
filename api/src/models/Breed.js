@@ -25,6 +25,9 @@ module.exports = (sequelize) => {
     life_span: {
       type: DataTypes.STRING,
     },
+    image_url: {
+      type: DataTypes.STRING,
+    },
     home_grown_data: {
       type: DataTypes.BOOLEAN,
       defaultValue: true

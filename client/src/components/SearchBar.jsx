@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchBreeds } from "../actions";
+import Filters from "./Filters";
 import './stylesheets/SearchBar.css'
 
 export default function SearchBar(){
 
-    const dogs = useSelector((state) => state.dogs);
+    // const dogs = useSelector((state) => state.dogs);
     const dispatch = useDispatch();
 
     const [breed, setBreed] = useState("");
@@ -30,6 +31,7 @@ export default function SearchBar(){
                     ></input>
                 <button>Search</button>
             </form>
+            {/* <Filters/> */}
         </div>
     )
 }

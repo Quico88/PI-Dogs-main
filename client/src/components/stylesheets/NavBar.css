@@ -1,9 +1,25 @@
 .link-container {
-    margin: 20px;
+    margin: 5px;
+}
+
+.NavBar{
+    height: 15%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px;
+    color: salmon;
 }
 
 .nav-link {
-    margin: 20px;
+    margin: 5px;
     color: black;
     font-weight: bold;
     text-decoration: none;

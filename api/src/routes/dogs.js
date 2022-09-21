@@ -32,7 +32,7 @@ dogsRoute.get('/:id', async (req, res) => {
     const { id } = req.params;
     try{
         let breed = await getBreedbyID(id);
-        if(breed) return res.status(200).json(breed);
+        if(breed && breed.length) return res.status(200).json(breed[0]);
         else return res.status(404).send(`No breed was found with the id: ${id}`)
         }
         catch (e) {
@@ -41,13 +41,13 @@ dogsRoute.get('/:id', async (req, res) => {
 })
 
 dogsRoute.post('/', async (req, res) => {
-    const {name, height_min, height_max, weight_min, weight_max, life_span, tempID} = req.body;
+    const {name, height_min, height_max, weight_min, weight_max, life_span, tempID, image_url} = req.body;
     if (!name || (!height_min && !height_max) || (!weight_min && !weight_max) || !tempID){
         return res.status(404).send('Not all the mandatory fields were filled');
     }
     
     try {
-        const newDog = await createDog(name, height_min, height_max, weight_min, weight_max, life_span, tempID)
+        const newDog = await createDog(name, height_min, height_max, weight_min, weight_max, life_span, tempID, image_url)
         return res.status(200).json(newDog);
     }
     catch (e) {

@@ -1,16 +1,24 @@
 .paginado{
+    height: 70%;
     list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .page_number {
-    margin: 5px;
+    height: 22px;
+    width: 22px;
+    margin: 2px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .page_number:hover {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 22px;
+    cursor: pointer;
 }

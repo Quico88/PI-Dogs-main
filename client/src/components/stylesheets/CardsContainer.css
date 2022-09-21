@@ -1,11 +1,22 @@
 
 .cards-full-page{
     background-color: antiquewhite;
+    height: 85%;
 }
 
 .CardsContainer {
+    height: 90%;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.page-bottom{
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    background-color: rgb(75, 205, 205);
+    opacity: 0.8;
 }
