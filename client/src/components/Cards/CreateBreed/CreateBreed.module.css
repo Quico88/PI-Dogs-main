@@ -1,0 +1,184 @@
+.createBreed {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.pageTop{
+    height: 7%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #6D6875;
+    opacity: 0.8;
+    justify-content: center;
+}
+
+.mainPage{
+    height: 93%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: rgb(253,253,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(247, 247, 247) 85%, rgb(224, 224, 224) 100%);
+}
+
+.creationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 90%;
+    margin-left: 40px;
+    text-align:left
+}
+.title {
+    align-self: center;
+    color: #355070;
+    text-transform: uppercase;
+}
+
+.creationCard {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: #ffb4a2;
+    width: 50%;
+    border: solid 1px #6D6875;
+    box-shadow: 3px 3px 10px #6d6875;
+}
+
+.checkbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rangeInput{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.inputError {
+    width: 80%;
+    color: rgb(188, 36, 19);
+    font-size: 16px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.textInput{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 10px 0 10px;
+}
+
+.textInputPlaceholder{
+    border-radius: 5px;
+    background-color: #fff;
+    width: 50%;
+    margin-left: 10px;
+}
+
+.label{
+    width: 40%;
+    align-self: left;
+}
+
+.rangeLabel{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.image {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 30%;
+}
+
+.createButton{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100px;
+    /* height: 20px; */
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 80%;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    margin: 5px;
+    padding: 5px 10px;
+    transition: 0.5s;
+    text-align: start;
+    border-radius: 5px;
+}
+
+.createButton:hover{
+    letter-spacing: 0.25em;   
+    color: #b5838d; 
+    box-shadow: 0 0 10px black;
+    scale: 1.4;
+}
+
+input[type=range]{
+    width: 50%;
+}
+
+.dropdown {
+    border-radius: 5px;
+    background-color: #fff;
+    width: 50%;
+    margin-left: 10px;
+}
+
+.tempList {
+    border-radius: 15px;
+    width: 200px;
+    background-color: #355070;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0px 5px 20px;
+    color: rgb(224 224 224);
+    border: solid 1px #192533;
+    text-indent: 5px;
+}
+
+.close {
+    border-radius: 50%;
+    background-color: black;
+    color: #fff;
+    border: 1px solid black;
+}
+
+.close:hover {
+    scale: 1.8;
+    background-color: rgb(99, 99, 99);
+    box-shadow: 0 0 10px #5a779b;
+    transition: 0.4s;
+}
+.tempListContainer{
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+}

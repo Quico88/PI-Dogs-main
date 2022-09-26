@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { getDogs, getTemperaments } from "../actions";
-import './stylesheets/LandingPage.css'
+import { getDogs, getTemperaments } from "../../../actions";
+import s from './LandingPage.module.css'
 
 export default function LandingPage(){
 
@@ -13,13 +13,13 @@ export default function LandingPage(){
     
     
     return (
-        <div className="landingMain">
-            <div className="rectangle">
+        <div className={s.landingMain}>
+            <div className={s.rectangle}>
                 <h1>Welcome to Dogify</h1>
-                <div className="button-container">
+                <div className={s.buttonContainer}>
                     <p>Find your next best friend</p>
                     <Link to='/home'>
-                        <button>Explore</button>
+                        <button className={s.exploreButton}>Explore</button>
                     </Link>
                 </div>
             </div>

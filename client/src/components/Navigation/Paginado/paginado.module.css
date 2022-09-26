@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
 }
 
 .page_number {
@@ -21,4 +21,11 @@
     font-weight: bold;
     font-size: 22px;
     cursor: pointer;
+}
+
+.page_number_current {
+    font-weight: bold;
+    font-size: 22px;
+    color: black;
+    
 }

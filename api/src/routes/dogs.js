@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllBreeds, getBreedsFromQuery, getBreedbyID, createDog } = require('../controllers');
+const { getAllBreeds, getBreedsFromQuery, getBreedbyID, createDog, deleteDog } = require('../controllers');
 const { Breed } = require('../db');
 
 const dogsRoute = Router();
@@ -54,3 +54,13 @@ dogsRoute.post('/', async (req, res) => {
         return res.status(400).send("Error in data provided");
     }
 })
+
+dogsRoute.delete('/:id', async(req, res) => {
+    try {
+        const {id} = req.params;
+        res.status(200).json(await deleteDog(id));
+        
+    } catch (error) {
+        return res.status(404).json({error: error.message })
+    }
+} )

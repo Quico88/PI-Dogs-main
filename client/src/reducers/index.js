@@ -1,9 +1,11 @@
+import Loading from "../components/Navigation/Loading/Loading"
 
 const initialState = {
     dogs: [],
     dogs_backup: [],
     temperaments: [],
-    dog_details: {}
+    dog_details: {},
+    loading: false
 }
 
 export default function rootReducer (state = initialState, action) {
@@ -12,16 +14,22 @@ export default function rootReducer (state = initialState, action) {
             ...state,
             temperaments: action.payload,
         })
+        case "START_LOADING":return ({
+            ...state,
+            loading: true,
+        })
         case "GET_DOGS":
             return ({
                 ...state,
                 dogs: action.payload,
-                dogs_backup: action.payload
+                dogs_backup: action.payload,
+                loading: false
             })
         case "GET_DOG_DETAILS":
             return ({
                 ...state,
-                dog_details: action.payload
+                dog_details: action.payload,
+                loading: false
             })
         case "FILTER_DOGS_BY_SOURCE":
             return ({
@@ -33,6 +41,11 @@ export default function rootReducer (state = initialState, action) {
                 ...state,
                 dogs: state.dogs_backup.filter( breed => breed.temperaments?.some(temp => temp.name === action.payload))
             })
+        case "FILTER_DOGS":
+            return ({
+                ...state,
+                dogs: state.dogs_backup.filter( breed => { return breed.temperaments?.some(temp => temp.name === action.payload.temperament) && breed.home_grown_data === action.payload.HG} )
+            })
         case "SEARCH_BREEDS":
             return ({
                 ...state,
@@ -42,6 +55,12 @@ export default function rootReducer (state = initialState, action) {
             return({
                 ...state,
                 dogs: state.dogs_backup
+            })
+        case "DELETE_DOG":
+            return({
+                ...state,
+                dogs: state.dogs.filter( breed => breed.id !== action.payload),
+                dogs_backup: state.dogs_backup.filter( breed => breed.id !== action.payload)
             })
         case "SORT_DOGS_ALPHABETICALLY":
             const sortedDogsABC = [...state.dogs];

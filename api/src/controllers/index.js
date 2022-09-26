@@ -9,8 +9,8 @@ const getBreedsFromAPI = async () => {
             {
                     id: e.id,
                     name: e.name,
-                    height: e.height.metric,
-                    weight: e.weight.metric,
+                    height: e.height.metric!='NaN' ? e.height.metric : e.height.imperial,
+                    weight: e.weight.metric.includes('NaN') ? "1 - 99" : e.weight.metric,
                     life_span: e.life_span,
                     image_url: e.image.url,
                     temperaments: e.temperament ? e.temperament.split(', ').map(temp => ({name: temp})) : null,
@@ -108,6 +108,13 @@ const createDog = async(name, height_min, height_max, weight_min, weight_max, li
 
     return newDog;
 }
+
+const deleteDog = async (id) => {
+    let TBDeleted = await Breed.destroy({
+        where: {id}
+    });
+    return TBDeleted;
+}
     
 
 module.exports = {
@@ -115,6 +122,7 @@ module.exports = {
     getBreedsFromQuery,
     getBreedbyID,
     getTemperaments,
-    createDog
+    createDog,
+    deleteDog
 }
 

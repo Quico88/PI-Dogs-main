@@ -1,9 +1,9 @@
 import './App.css';
 import { Route } from 'react-router-dom';
-import CardsContainer from './components/CardsContainer';
-import LandingPage from './components/LandingPage';
-import BreedDetail from './components/BreedDetail';
-import CreateBreed from './components/CreateBreed';
+import CardsContainer from './components/Cards/CardsContainer/CardsContainer.jsx'
+import LandingPage from './components/Navigation/LandingPage/LandingPage.jsx';
+import BreedDetail from './components/Cards/BreedDetail/BreedDetail.jsx';
+import CreateBreed from './components/Cards/CreateBreed/CreateBreed.jsx';
 
 
 function App() {

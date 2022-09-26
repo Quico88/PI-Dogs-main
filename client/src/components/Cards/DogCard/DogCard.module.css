@@ -1,0 +1,184 @@
+.dogImage {
+    height: 80%;
+    width: 100%;
+    /* opacity: .95; */
+    box-shadow: 2px 2px 12px #6d6875;
+    border-radius: 5px;
+    margin-top: 3px;
+}
+
+/* old version */
+/* .dogCardContainer {
+    width: 20%;
+    min-width: 240px;
+    max-width: 280px;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    margin: 15px;
+    opacity: 1;
+    box-shadow: 2px 2px 5px #757271;
+}
+
+.dogCardContainer:hover{
+  transform: scale(1.05);
+  transition: 0.4s;
+  box-shadow: 2px 2px 5px #3c3a39;
+  background-color: #fce3dd;
+} */
+
+.dogCardContainer {
+    width: 33%;
+    min-width: 360px;
+    max-width: 400px;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #fce3dd;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px #757271;
+    /* border: solid; */
+}
+
+.dogCardContainer:hover{
+  transform: scale(1.05);
+  transition: 0.6s;
+  box-shadow: 4px 4px 30px #E5989B;
+  background-color: #fce3dd;
+}
+
+.contentContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.contentContainerTop {
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 30%;
+}
+
+.contentContainerBody {
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 30%;
+    margin-left: 30px;
+    text-align: left;
+}
+
+.contentContainerTemps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 40%;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 16px;
+    border: #6D6875 solid 0.4px;
+}
+
+.tempsList {
+    /* width: 39%; */
+    /* align-self: flex-start; */
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 80%; */
+}
+
+.tempItem {
+    border-radius: 5px;
+    font-size: 10px;
+    background-color: #fce3dd;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:flex-start;
+    color: #302f30;
+    border: solid 1px #6D6875;
+    text-align: center;
+    margin: 3px;
+    padding: 2px;
+}
+
+.tempItem:hover {
+    background-color: #E5989B;
+    cursor: pointer;
+}
+
+.tempTitle {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: #6d6875;
+}
+
+.imgContainer {
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dogTitle{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #E5989B;
+    font-size: 14px;
+
+}
+
+.dogLink{
+    position: relative;
+    top: 5px;
+    text-decoration: none;
+    color: #6d6875;
+}
+
+.weight{
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6D6875;
+    text-align: center;
+}
+
+.deleteBtn {
+    position: relative;
+    align-self: flex-end;
+    top: 2px;
+    right: 2px;
+    background-color: #b5838d;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.deleteBtn:hover{
+    background-color: #e5989b;
+    transition: 0.4s;
+    box-shadow: 5px 5px 10px black;
+}
+

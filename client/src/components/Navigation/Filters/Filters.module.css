@@ -1,0 +1,30 @@
+.filterContainer{
+    display: flex;
+    height: 30px;
+    width: 25%;
+    margin-right: 10px;
+    opacity: 0.7;
+    flex-direction: row;
+    align-items: center;
+}
+
+.source{
+    height:80%;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.temperaments{
+    height:80%;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.cleanFilter{
+    scale: .95;
+}
+
+.cleanFilter:hover{
+    box-shadow: 2px 2px 5px #6D6875;
+    cursor: pointer;
+}

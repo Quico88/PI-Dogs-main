@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchBreeds } from "../actions";
-import Filters from "./Filters";
-import './stylesheets/SearchBar.css'
+import { searchBreeds } from "../../../actions";
+import s from './SearchBar.module.css';
 
 export default function SearchBar(){
 
-    // const dogs = useSelector((state) => state.dogs);
     const dispatch = useDispatch();
 
     const [breed, setBreed] = useState("");
@@ -16,22 +14,23 @@ export default function SearchBar(){
 
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(searchBreeds(breed));
+        dispatch(searchBreeds(breed.toLowerCase()));
         setBreed("");
+        document.getElementById('sourceSelector').value = "all_breeds";
+        document.getElementById('tempSelector').value = "all";
     };
 
     return (
-        <div className="search-container">
+        <div className={s.searchContainer}>
             <form onSubmit={e => handleSubmit(e)}>
-                <input 
-                    placeholder="Search breeds..."
+                <input className={s.searchBar}
+                    placeholder="Search for breeds..."
                     type='text'
                     value={breed}
                     onChange={ e => handleChange(e)}
                     ></input>
-                <button>Search</button>
+                <button className={s.searchButton}>Search</button>
             </form>
-            {/* <Filters/> */}
         </div>
     )
 }

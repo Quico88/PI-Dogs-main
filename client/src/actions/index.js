@@ -6,6 +6,7 @@ const SERVER_URL = 'http://localhost:3001';
 
 export function getDogs () {
     return async function(dispatch) {
+        dispatch({ type: "START_LOADING"});
         const dogs = await axios.get(`${SERVER_URL}/dogs`);
         return (
             dispatch({
@@ -19,9 +20,9 @@ export function getDogs () {
 
 export function getDogDetails (id) {
     return async function(dispatch) {
+        dispatch({ type: "START_LOADING"});
         try {    
             const details = await axios.get(`${SERVER_URL}/dogs/${id}`);
-            console.log(details);
             return (
                 dispatch({
                         type: "GET_DOG_DETAILS",
@@ -43,6 +44,7 @@ export function getDogDetails (id) {
 
 export function getTemperaments () {
     return async function(dispatch) {
+        // dispatch({ type: "START_LOADING"});
         const temperaments = await axios.get(`${SERVER_URL}/temperaments`);
         return (
             dispatch({
@@ -90,6 +92,10 @@ export function filterDogsByTemp (payload) {
     return { type: "FILTER_DOGS_BY_TEMP", payload }
 }
 
+export function filterDogs (payload){
+    return { type: "FILTER_DOGS", payload }
+}
+
 export function removeFilters(){
     return { type: "REMOVE_FILTERS" , payload: null}
 }
@@ -114,7 +120,33 @@ export function createBreed (payload) {
         catch (e) {
             alert(e.response.data)
         }
-       
     }
     
+}
+
+//DELETE ACTIONS
+
+export function deleteBreed(id) {
+    return async function(dispatch){
+        try{
+            await axios.delete(`${SERVER_URL}/dogs/${id}`) 
+            return (
+                dispatch({
+                        type: "DELETE_DOG",
+                        payload: id
+                })
+            )       
+        }
+        catch (e){
+            console.log(e.message);
+        }
+    }
+}
+
+//LOADING
+
+export default function startLoading (){
+    return({
+        type: 'START_LOADING'
+    })
 }
