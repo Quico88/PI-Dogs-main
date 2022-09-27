@@ -104,7 +104,7 @@ const createDog = async(name, height_min, height_max, weight_min, weight_max, li
         image_url
     })
 
-    newDog.setTemperaments(tempID);
+    if(tempID) newDog.setTemperaments(tempID);
 
     return newDog;
 }

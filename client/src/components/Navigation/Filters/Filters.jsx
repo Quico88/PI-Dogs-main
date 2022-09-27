@@ -16,10 +16,14 @@ export default function Filters () {
 
         if (source == 'breeds_from_API') HG = false;
         else if (source == 'breeds_HG') HG = true;
+
+        document.getElementById('weightSort').value='title';
+        document.getElementById('alphabeticalSort').value='title';
         
         if(source === "all_breeds" && temperament==='all') return dispatch(removeFilters());
         if (source === "all_breeds") return dispatch(filterDogsByTemp(temperament));
         if (temperament === "all") return dispatch(filterDogsBySource(HG));
+        
         dispatch(filterDogs({HG, temperament}));
     }
 

@@ -34,9 +34,10 @@ import { Link } from "react-router-dom";
                         <div className={s.breedInfo}>
                             <img className={s.dogImage} src={image_url ? image_url : default_dog_pic } alt="dog"/>
                             <div className={s.breedInfoTxt}> 
-                                <span className={s.desc}>Weight: {weight} kg</span>
-                                <span className={s.desc}>Height: {height} cm</span>
-                                <span className={s.desc}>Life Span: {life_span}</span>
+                                <span className={s.desc}><b>Weight: </b>{weight} kg</span>
+                                <span className={s.desc}><b>Height: </b>{height} cm</span>
+                                <span className={s.desc}><b>Life Span: </b>{life_span}</span>
+                                <span><b>Temperaments:</b></span>
                                 <span> {stringOfTemperaments} </span>
                             </div>
                         </div>

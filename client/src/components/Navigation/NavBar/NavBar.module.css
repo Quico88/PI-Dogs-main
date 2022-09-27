@@ -30,3 +30,15 @@
     color: black;
     text-decoration: none;
 }
+
+.home,
+    image {
+            scale: 0.5;
+}
+
+.home:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #4f4c53;
+
+}
+

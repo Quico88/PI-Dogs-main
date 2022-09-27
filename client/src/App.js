@@ -4,6 +4,7 @@ import CardsContainer from './components/Cards/CardsContainer/CardsContainer.jsx
 import LandingPage from './components/Navigation/LandingPage/LandingPage.jsx';
 import BreedDetail from './components/Cards/BreedDetail/BreedDetail.jsx';
 import CreateBreed from './components/Cards/CreateBreed/CreateBreed.jsx';
+import About from './components/Cards/About/About';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 			<Route exact path="/home" component={CardsContainer}/>
 			<Route path="/create" component={CreateBreed}/>
 			<Route path="/dog/:id" component={BreedDetail}/>
+			<Route path="/about" component={About}/>
 		</div>
 	);
 }

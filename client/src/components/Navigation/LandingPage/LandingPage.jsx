@@ -15,9 +15,9 @@ export default function LandingPage(){
     return (
         <div className={s.landingMain}>
             <div className={s.rectangle}>
-                <h1>Welcome to Dogify</h1>
+                <h1 className={s.title}>Welcome to Dogify</h1>
                 <div className={s.buttonContainer}>
-                    <p>Find your next best friend</p>
+                    <p className={s.text}>Find your next best friend</p>
                     <Link to='/home'>
                         <button className={s.exploreButton}>Explore</button>
                     </Link>

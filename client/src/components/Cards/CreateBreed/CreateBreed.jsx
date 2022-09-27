@@ -6,11 +6,13 @@ import { createBreed, getDogs, getTemperaments } from "../../../actions";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import  s from './CreateBreed.module.css'
 import image from '../../../Images/pexels-anna-shvets-4588047.jpg'
+import home from '../../../Images/home-3.png'
+import { NavLink } from "react-router-dom";
 
 
 export default function CreateBreed(){
 
-    const { temperaments } = useSelector( state => state)
+    const { temperaments, dogs_backup } = useSelector( state => state)
     const dispatch = useDispatch();
     useEffect( () => { if(!temperaments.length) dispatch(getTemperaments())},[temperaments] );
 
@@ -41,11 +43,15 @@ export default function CreateBreed(){
         else if (inputs.name.length < 3){
             error.name = " - Breed name should be at least 3 letters long"
         }
+        else if(dogs_backup.some( breed => breed.name.toLowerCase() === inputs.name.toLowerCase())){
+            error.name = "Breed already exists. Please enter a different name"
+        }
+
         if(inputs.life_span && lifeSpanRule.test(inputs.life_span)){
             error.life_span = " - Life span should be expressed in numbers (years)";
         } 
         if(inputs.life_span && (inputs.life_span < 2 || inputs.life_span > 25)){
-            error.life_span = " - Life span should be from 2 to 25 years";
+            error.life_span = " - Life span can only be set from 2 to 25 years";
         }
         return error;
     }
@@ -117,6 +123,9 @@ export default function CreateBreed(){
             </div>
             <div className={s.mainPage}>
                 <div className={s.creationCard}>
+                    <NavLink to='/home' className={s.home}>
+                        <img src={home} alt='home'/>
+                    </NavLink>
                     <h2 className={s.title}>Create your own breed!</h2>
                     <form className={s.creationForm} onSubmit={ e => handleSubmit(e)}>
                         <div className={s.textInput}><label className={s.label}>Breed name:</label><input className={s.textInputPlaceholder} type='text' value={input.name} name='name' onChange={(e) => handleChange(e) }/></div> 
@@ -128,7 +137,8 @@ export default function CreateBreed(){
                         <div className={s.textInput}><label className={s.label}>Image (paste URL):</label><input className={s.textInputPlaceholder} type='text' value={input.image_url} name='image_url'  onChange={(e) => handleChange(e) }/></div>
                         <div className={s.textInput}>
                             <label className={s.label}>Add Temperaments:</label>
-                            <select className={s.dropdown} onChange={ e => handleSelect(e)}>
+                            <select className={s.dropdown} onChange={ e => handleSelect(e)} defaultValue='title'>
+                                <option disabled value='title'>Select Temperament</option>
                                 {temperaments?.map( temp => 
                                     <option key={temp.id} value={temp.id}>{temp.name}</option>
                                 )}
