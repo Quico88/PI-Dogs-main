@@ -30,7 +30,7 @@ export default function CreateBreed(){
     function validate(inputs){
         let error = {};
         let nameRule = /[^a-zA-Z ]/;
-        let lifeSpanRule = /[^0-9 -]/;
+        let lifeSpanRule = /[^0-9]/;
 
         if(!inputs.name){
             error.name = ' - Name field is mandatory'
@@ -42,8 +42,11 @@ export default function CreateBreed(){
             error.name = " - Breed name should be at least 3 letters long"
         }
         if(inputs.life_span && lifeSpanRule.test(inputs.life_span)){
-            error.life_span = " - Enter life span in years (1 number or 2 numbers separeted by '-' )";
-        }   
+            error.life_span = " - Life span should be expressed in numbers (years)";
+        } 
+        if(inputs.life_span && (inputs.life_span < 2 || inputs.life_span > 25)){
+            error.life_span = " - Life span should be from 2 to 25 years";
+        }
         return error;
     }
 
@@ -121,7 +124,7 @@ export default function CreateBreed(){
                         <div className={s.rangeInput}><label className={s.rangeLabel}>Maximum height (in cm):<input type='range' step='1' min={input.height_min} max='90' value={input.height_max} name='height_max' onChange={(e) => handleChange(e) }/></label><h4>{input.height_max} cm</h4></div>
                         <div className={s.rangeInput}><label className={s.rangeLabel}>Minimum weight (in Kg):<input type='range' step='1' min='1' max={input.weight_max} value={input.weight_min} name='weight_min' onChange={(e) => handleChange(e) }/></label><h4>{input.weight_min} Kg</h4></div>
                         <div className={s.rangeInput}><label className={s.rangeLabel}>Maximum weight (in Kg):<input type='range' step='1' min={input.weight_min} max='95' value={input.weight_max} name='weight_max' onChange={(e) => handleChange(e) }/></label><h4>{input.weight_max} Kg</h4></div>
-                        <div className={s.textInput}><label className={s.label}>Life Span (in years):</label><input  className={s.textInputPlaceholder} type='text' value={input.life_span} name='life_span' onChange={(e) => handleChange(e) }/></div>
+                        <div className={s.textInput}><label className={s.label}>Life Span (in years):</label><input  className={s.textInputPlaceholder} type='number' min='2' max='25' value={input.life_span} name='life_span' onChange={(e) => handleChange(e) }/></div>
                         <div className={s.textInput}><label className={s.label}>Image (paste URL):</label><input className={s.textInputPlaceholder} type='text' value={input.image_url} name='image_url'  onChange={(e) => handleChange(e) }/></div>
                         <div className={s.textInput}>
                             <label className={s.label}>Add Temperaments:</label>
