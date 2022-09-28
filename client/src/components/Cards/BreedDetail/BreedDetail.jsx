@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogDetails } from "../../../actions"
+import { cleanDogDetails, getDogDetails } from "../../../actions"
 import NavBar from "../../Navigation/NavBar/NavBar"
 import s from './BreedDetail.module.css'
 import default_dog_pic from '../../../Images/dog.png'
@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
     
     useEffect( () => {
         dispatch(getDogDetails(id));
+        return () => dispatch(cleanDogDetails())
     }, []);
 
     const {dog_details, loading} = useSelector((globalState) => globalState);

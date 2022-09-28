@@ -42,6 +42,10 @@ export function getDogDetails (id) {
     
 }
 
+export function cleanDogDetails () {
+    return { type: "CLEAN_DOG_DETAILS"}
+}
+
 export function getTemperaments () {
     return async function(dispatch) {
         // dispatch({ type: "START_LOADING"});

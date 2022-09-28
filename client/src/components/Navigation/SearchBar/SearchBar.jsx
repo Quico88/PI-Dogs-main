@@ -9,7 +9,7 @@ export default function SearchBar(){
 
     const [breed, setBreed] = useState("");
     function handleChange(e){
-        setBreed(e.target.value)
+        setBreed(e.target.value);
     };
 
     function handleSubmit(e){

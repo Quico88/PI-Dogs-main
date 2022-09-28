@@ -31,6 +31,11 @@ export default function rootReducer (state = initialState, action) {
                 dog_details: action.payload,
                 loading: false
             })
+        case "CLEAN_DOG_DETAILS":
+            return ({
+                ...state,
+                dog_details: [],
+            })
         case "FILTER_DOGS_BY_SOURCE":
             return ({
                 ...state,

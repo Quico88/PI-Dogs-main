@@ -29,17 +29,6 @@ const dog4 = {
 };
 
 
-
-// describe('Dog routes ------ GET -----', () => {
-//   before(() => conn.authenticate()
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//   }));
-//   Breed.sync({ force: true }).then(() => Breed.create(dog1));
-// })
-
-
-
 describe('Dog routes ------ GET -----', () => {
   beforeEach(async () => {
     await conn.sync({ force: true });

@@ -12,6 +12,7 @@ export default function About(){
             <div className={s.aboutContent}>
                 <h1 className={s.title}>About</h1>    
                 <p><b>Dogify</b> was built as part as the <b>Henry</b> Fullstack Developer Bootcamp final project in September 2022</p>
+                <p>Breeds details are illustrative and were extracted from <a href='https://thedogapi.com'>"The Dog API"</a></p>
                 <p>Technologies used:</p>
                 <ul>
                     <li>React</li>
