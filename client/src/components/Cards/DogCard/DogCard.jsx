@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import s from './DogCard.module.css'
 import default_dog_pic from '../../../Images/dog.png'
 import { deleteBreed, filterDogsByTemp } from "../../../actions";
@@ -45,9 +45,9 @@ export default function DogCard(props) {
                     <div className={s.contentContainerTemps}>
                         <span className={s.tempTitle}>Temperaments</span>
                         <div className={s.tempsList}>
-                            {temperament?.map(temp => 
+                            {temperament?.map((temp, index) => index < 6 &&
                                 <span 
-                                    key={temp.id} 
+                                    key={index}
                                     className={s.tempItem} 
                                     onClick={(e)=> selectTemp(e)} 
                                     value={temp.name}

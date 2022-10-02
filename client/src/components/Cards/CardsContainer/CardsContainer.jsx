@@ -51,6 +51,7 @@ function CardsContainer() {
                                 temperament={ dog.temperaments }
                                 key={index}
                                 hg = {dog.home_grown_data}
+                                origin = {dog.origin}
                             />    
                         ) : <span className={s.notFound}>No breeds were found on your search. Please try again!</span>}
                     </div> }

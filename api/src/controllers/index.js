@@ -14,7 +14,8 @@ const getBreedsFromAPI = async () => {
                     life_span: e.life_span,
                     image_url: e.image.url,
                     temperaments: e.temperament ? e.temperament.split(', ').map(temp => ({name: temp})) : null,
-                    home_grown_data: false
+                    home_grown_data: false,
+                    bred_for: e.bred_for
             }));
         return breedsFromAPI;
 }
@@ -96,6 +97,7 @@ const createDog = async(name, height_min, height_max, weight_min, weight_max, li
     else if (height_min) height+=height_min;
     else height+=height_max;
 
+    
     const newDog = await Breed.create({
         name,
         height,
@@ -104,9 +106,57 @@ const createDog = async(name, height_min, height_max, weight_min, weight_max, li
         image_url
     })
 
-    if(tempID) newDog.setTemperaments(tempID);
+    await newDog.setTemperaments(tempID);
 
-    return newDog;
+    const createdDog = await Breed.findByPk(newDog.id, {
+        include: {
+            model: Temperament,
+            attributes: ['name'],
+            through: {
+                attributes: []
+            }
+        }
+    });
+
+    return createdDog;
+}
+
+const updateDog = async (id, name, height_min, height_max, weight_min, weight_max, life_span, tempID, image_url) => {
+    
+    let weight = "";
+    if (weight_min && weight_max) weight+=`${weight_min} - ${weight_max}`;
+    else if (weight_min) weight+=weight_min;
+    else weight+=weight_max;
+
+    let height = "";
+    if (height_min && height_max) height+=`${height_min} - ${height_max}`;
+    else if (height_min) height+=height_min;
+    else height+=height_max;
+
+    const TBUpdated = await Breed.findByPk(id, {
+        include: {
+            model: Temperament,
+            attributes: ['name'],
+            through: {
+                attributes: []
+            }
+        }
+    });
+
+    await TBUpdated.update({name, height, weight, life_span, image_url})
+    if(tempID) await TBUpdated.setTemperaments(tempID);
+    
+    const updatedDog = await Breed.findByPk(id, {
+        include: {
+            model: Temperament,
+            attributes: ['name'],
+            through: {
+                attributes: []
+            }
+        }
+    })
+    
+    return updatedDog;
 }
 
 const deleteDog = async (id) => {
@@ -123,6 +173,7 @@ module.exports = {
     getBreedbyID,
     getTemperaments,
     createDog,
-    deleteDog
+    deleteDog,
+    updateDog
 }
 

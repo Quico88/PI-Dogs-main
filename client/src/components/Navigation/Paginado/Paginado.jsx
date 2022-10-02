@@ -15,7 +15,7 @@ export default function Paginado({paginado, dpp, dogsQnty, currentPage}){
     }
 
     function nextPage(page){
-        if(page!= pageQnty) paginado(page+1)
+        if(page!== pageQnty) paginado(page+1)
     }
     
     useEffect(()=> {window.addEventListener("keydown",handleKeyDown);

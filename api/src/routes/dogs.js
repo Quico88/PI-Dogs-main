@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllBreeds, getBreedsFromQuery, getBreedbyID, createDog, deleteDog } = require('../controllers');
+const { getAllBreeds, getBreedsFromQuery, getBreedbyID, createDog, deleteDog, updateDog } = require('../controllers');
 const { Breed } = require('../db');
 
 const dogsRoute = Router();
@@ -54,6 +54,20 @@ dogsRoute.post('/', async (req, res) => {
         return res.status(400).send("Error in data provided");
     }
 })
+
+dogsRoute.put('/:id', async(req, res) => {
+    const {name, height_min, height_max, weight_min, weight_max, life_span, tempID, image_url} = req.body;
+    if (!name || (!height_min && !height_max) || (!weight_min && !weight_max) || !tempID){
+        return res.status(404).send('Not all the mandatory fields were filled');
+    }
+    try {
+        const {id} = req.params;
+        res.status(200).json(await updateDog(id, name, height_min, height_max, weight_min, weight_max, life_span, tempID, image_url));
+        
+    } catch (error) {
+        return res.status(404).json({error: error.message })
+    }
+} )
 
 dogsRoute.delete('/:id', async(req, res) => {
     try {

@@ -114,12 +114,38 @@ export function sortAlphabetically (payload) {
     return { type: "SORT_DOGS_ALPHABETICALLY", payload }
 }
 
+//PUT ACTION
+
+export function updateBreed (id, dogDetails) {
+    return async function(dispatch) {
+        try {
+            const response = await axios.put(`${SERVER_URL}/dogs/${id}`,dogDetails);
+            return (
+                dispatch({
+                        type: "UPDATE_DOG",
+                        payload: response.data
+                })
+            )
+        }
+        catch (e) {
+            alert(e.response.data)
+        }
+    }
+    
+}
+
 //POST ACTION
 
 export function createBreed (payload) {
-    return async function() {
+    return async function(dispatch) {
         try {
             const response = await axios.post(`${SERVER_URL}/dogs`,payload);
+            return (
+                dispatch({
+                        type: "CREATE_DOG",
+                        payload: response.data
+                })
+            )
         }
         catch (e) {
             alert(e.response.data)

@@ -16,6 +16,7 @@ function App() {
 			<Route path="/create" component={CreateBreed}/>
 			<Route path="/dog/:id" component={BreedDetail}/>
 			<Route path="/about" component={About}/>
+			<Route path="/edit/:id" component={CreateBreed}/>
 		</div>
 	);
 }

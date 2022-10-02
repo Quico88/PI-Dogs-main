@@ -1,5 +1,3 @@
-import Loading from "../components/Navigation/Loading/Loading"
-
 const initialState = {
     dogs: [],
     dogs_backup: [],
@@ -60,6 +58,19 @@ export default function rootReducer (state = initialState, action) {
             return({
                 ...state,
                 dogs: state.dogs_backup
+            })
+        case "CREATE_DOG":
+            return({
+                ...state,
+                dogs: [...state.dogs,action.payload],
+                dogs_backup: [...state.dogs_backup,action.payload]
+            })
+        case "UPDATE_DOG":
+            let id = action.payload.id;
+            return({
+                ...state,
+                dogs: [...state.dogs.filter(dog => dog.id != id),action.payload],
+                dogs_backup: [...state.dogs_backup.filter(dog => dog.id != id),action.payload]
             })
         case "DELETE_DOG":
             return({

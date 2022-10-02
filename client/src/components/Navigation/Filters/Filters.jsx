@@ -3,19 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterDogsBySource, filterDogsByTemp, removeFilters, filterDogs } from "../../../actions";
 import s from './Filters.module.css';
 import clear from '../../../Images/cleaning_services.png';
+import { useEffect } from "react";
+
+var source = 'all_breeds';
+var temperament = 'all';
 
 export default function Filters () {
     const dispatch = useDispatch();
 
-    const { temperaments } = useSelector((state) => state);
+    const { temperaments, dogs, dogs_backup } = useSelector((state) => state);
+
+    useEffect( ()=> {
+        if (dogs.length !== dogs_backup.length){
+            document.getElementById('sourceSelector').value = source;
+            document.getElementById('tempSelector').value = temperament;
+        }
+    } , [] );
     
     function handleSelect(e){
-        let source = document.getElementById('sourceSelector').value;
-        let temperament = document.getElementById('tempSelector').value;
+        source = document.getElementById('sourceSelector').value;
+        temperament = document.getElementById('tempSelector').value;
         let HG='';
 
-        if (source == 'breeds_from_API') HG = false;
-        else if (source == 'breeds_HG') HG = true;
+        if (source === 'breeds_from_API') HG = false;
+        else if (source === 'breeds_HG') HG = true;
 
         document.getElementById('weightSort').value='title';
         document.getElementById('alphabeticalSort').value='title';

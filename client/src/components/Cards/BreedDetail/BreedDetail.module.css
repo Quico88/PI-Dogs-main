@@ -48,6 +48,12 @@
     margin: 15px;
 }
 
+.titleCont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .breedTitle {
     font-size: 40px;
     font-weight: bold;
@@ -86,3 +92,13 @@
     transition: 0.6s;
 }
 
+.pen {
+    width: 26px;
+    height: 26px;
+    margin: 20px;
+}
+
+.pen:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 10px 0px #302f30;
+}
