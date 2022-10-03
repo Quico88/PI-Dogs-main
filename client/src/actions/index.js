@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:3001';
+//const SERVER_URL = 'http://localhost:3001';
+
 
 //GET ACTIONS
 
 export function getDogs () {
     return async function(dispatch) {
         dispatch({ type: "START_LOADING"});
-        const dogs = await axios.get(`${SERVER_URL}/dogs`);
+        const dogs = await axios.get(`/dogs`);
         return (
             dispatch({
                     type: "GET_DOGS",
@@ -22,7 +23,7 @@ export function getDogDetails (id) {
     return async function(dispatch) {
         dispatch({ type: "START_LOADING"});
         try {    
-            const details = await axios.get(`${SERVER_URL}/dogs/${id}`);
+            const details = await axios.get(`/dogs/${id}`);
             return (
                 dispatch({
                         type: "GET_DOG_DETAILS",
@@ -49,7 +50,7 @@ export function cleanDogDetails () {
 export function getTemperaments () {
     return async function(dispatch) {
         // dispatch({ type: "START_LOADING"});
-        const temperaments = await axios.get(`${SERVER_URL}/temperaments`);
+        const temperaments = await axios.get(`/temperaments`);
         return (
             dispatch({
                     type: "GET_TEMPERAMENTS",
@@ -65,7 +66,7 @@ export function getTemperaments () {
 export function searchBreeds (breed) {
     return async function(dispatch) {
         try{
-            const dogs = await axios.get(`${SERVER_URL}/dogs?name=${breed}`);
+            const dogs = await axios.get(`/dogs?name=${breed}`);
             return (
                 dispatch({
                         type: "SEARCH_BREEDS",
@@ -119,7 +120,7 @@ export function sortAlphabetically (payload) {
 export function updateBreed (id, dogDetails) {
     return async function(dispatch) {
         try {
-            const response = await axios.put(`${SERVER_URL}/dogs/${id}`,dogDetails);
+            const response = await axios.put(`/dogs/${id}`,dogDetails);
             return (
                 dispatch({
                         type: "UPDATE_DOG",
@@ -139,7 +140,7 @@ export function updateBreed (id, dogDetails) {
 export function createBreed (payload) {
     return async function(dispatch) {
         try {
-            const response = await axios.post(`${SERVER_URL}/dogs`,payload);
+            const response = await axios.post(`/dogs`,payload);
             return (
                 dispatch({
                         type: "CREATE_DOG",
@@ -159,7 +160,7 @@ export function createBreed (payload) {
 export function deleteBreed(id) {
     return async function(dispatch){
         try{
-            await axios.delete(`${SERVER_URL}/dogs/${id}`) 
+            await axios.delete(`/dogs/${id}`) 
             return (
                 dispatch({
                         type: "DELETE_DOG",
