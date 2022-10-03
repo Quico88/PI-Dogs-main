@@ -46,3 +46,10 @@
     position: relative;
     top: 5px;
 }
+
+@media screen and (max-width: 850px){
+    .aboutContent{
+        width: 85%;
+        font-size: 12px;
+    }
+}

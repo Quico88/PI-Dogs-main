@@ -195,3 +195,21 @@ input[type=range]{
     scale: 1.01;
     transition: 0.4s;
 }
+
+@media screen and (max-width: 850px){
+    .image{
+       display: none;
+    }
+    .home {
+        display: none;
+    }
+
+    .creationCard{
+        width: 97%;
+        max-height: 100%;
+        font-size: 11px;
+    }
+    .title{
+        font-size: 16px;
+    }
+}

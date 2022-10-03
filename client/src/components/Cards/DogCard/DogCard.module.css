@@ -7,30 +7,6 @@
     margin-top: 3px;
 }
 
-/* old version */
-/* .dogCardContainer {
-    width: 20%;
-    min-width: 240px;
-    max-width: 280px;
-    height: 45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: none;
-    margin: 15px;
-    opacity: 1;
-    box-shadow: 2px 2px 5px #757271;
-}
-
-.dogCardContainer:hover{
-  transform: scale(1.05);
-  transition: 0.4s;
-  box-shadow: 2px 2px 5px #3c3a39;
-  background-color: #fce3dd;
-} */
 
 .dogCardContainer {
     width: 33%;
@@ -182,3 +158,14 @@
     box-shadow: 5px 5px 10px black;
 }
 
+@media screen and (max-width: 850px){
+    .dogCardContainer{
+        width: 85%;
+    }
+    .weight{
+        font-size: 9px;
+    }
+    .tempItem {
+        font-size: 9px;
+    }   
+}

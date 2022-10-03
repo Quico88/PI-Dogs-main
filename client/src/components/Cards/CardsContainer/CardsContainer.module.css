@@ -58,3 +58,11 @@
 .blank {
     width: 25%;
 }
+
+@media screen and (max-width: 850px){
+    .blank{
+        width: 0px;
+    }
+
+}
+

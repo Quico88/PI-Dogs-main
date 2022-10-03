@@ -21,3 +21,13 @@
     border-radius: 5px;
     background-color: #FFB4A2;
 }
+
+@media screen and (max-width: 850px){
+    .searchBar{
+        min-width: 100px;
+        width: 100px;
+    }
+    .searchButton{
+        width: 65px;
+    }
+}
