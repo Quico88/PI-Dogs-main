@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L",
-    "test": "mocha -w ./tests/**/*.spec.js"
-  },
+    "start": "node app.js",
+    "start:dev": "nodemon app.js"
+},  
   "author": "Henry",
   "license": "ISC",
   "engines": {
