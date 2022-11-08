@@ -1,6 +1,6 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# Individual Project - Henry Dogs
+# Individual Project - Dogify
 
 <img height="200" src="./dog.png" />
 
@@ -33,3 +33,5 @@ Technologies used:
 - Node.js
 - Sequelize
 - PostgreSQL
+
+https://pi-dogs-main-sigma.vercel.app
