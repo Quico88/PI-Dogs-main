@@ -34,4 +34,4 @@ Technologies used:
 - Sequelize
 - PostgreSQL
 
-https://pi-dogs-main-sigma.vercel.app
+💻 https://pi-dogs-main-sigma.vercel.app (deployed version)
